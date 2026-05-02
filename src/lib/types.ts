@@ -9,7 +9,7 @@ export type ItemStatus =
 
 export type Priority = 'normal' | 'high' | 'urgent'
 
-export type Author = 'bento' | 'brian'
+export type Author = 'agi' | 'george'
 
 export type NotificationType =
   | 'vip_email'

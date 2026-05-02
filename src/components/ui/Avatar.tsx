@@ -15,8 +15,8 @@ export function Avatar({ author, size = 'md', className }: AvatarProps) {
   }
 
   const gradients = {
-    bento: 'linear-gradient(135deg, #8B5CF6, #6366F1)',
-    brian: 'linear-gradient(135deg, #3B82F6, #06B6D4)',
+    agi: 'linear-gradient(135deg, #10B981, #06B6D4)',
+    george: 'linear-gradient(135deg, #8B5CF6, #6366F1)',
   }
 
   return (
@@ -26,9 +26,9 @@ export function Avatar({ author, size = 'md', className }: AvatarProps) {
         sizes[size],
         className
       )}
-      style={{ background: gradients[author] ?? gradients.brian }}
+      style={{ background: gradients[author] ?? gradients.george }}
     >
-      {author === 'bento' ? 'B' : 'BT'}
+      {author === 'agi' ? '🧠' : '👤'}
     </div>
   )
 }

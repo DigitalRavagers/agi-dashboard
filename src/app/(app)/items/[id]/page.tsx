@@ -285,7 +285,7 @@ export default function ItemDetailPage({ params }: { params: Promise<{ id: strin
       const client = getSupabase()
       const { data } = await client
         .from('comments')
-        .insert({ item_id: id, author: 'brian', content })
+        .insert({ item_id: id, author: 'george', content })
         .select()
         .single()
       if (data) addComment(data)

@@ -205,7 +205,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key`}
   -H "Content-Type: application/json" \\
   -d '{"type":"draft","title":"...", \\
     "project":"newsletter","status":"in_review", \\
-    "created_by":"bento"}'`}
+    "created_by":"agi"}'`}
             </pre>
           </div>
         </div>
