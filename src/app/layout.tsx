@@ -3,8 +3,8 @@ import './globals.css'
 import { ThemeProvider } from '@/components/layout/ThemeProvider'
 
 export const metadata: Metadata = {
-  title: 'BentoBoard',
-  description: 'A shared workspace for Brian and Bento to organize, review, and approve work.',
+  title: "AGI Dashboard",
+  description: "Your personal AGI Dashboard — capture, organize, execute, remember, and learn."',
 }
 
 export const viewport: Viewport = {
