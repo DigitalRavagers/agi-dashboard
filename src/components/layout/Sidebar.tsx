@@ -2,17 +2,12 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useMemo } from 'react'
 import { useBentoStore } from '@/lib/store'
 import { useThemeStore } from '@/lib/theme'
 import { cn } from '@/lib/utils'
-import { DEFAULT_PROJECTS } from '@/lib/utils'
 import {
   Inbox,
-  FileText,
-  Lightbulb,
   FolderOpen,
-  CheckSquare,
   Settings,
   ChevronLeft,
   ChevronRight,
@@ -21,33 +16,25 @@ import {
   TreePine,
   Sunset,
   MountainSnow,
+  Cpu,
+  BookOpen,
+  Sparkles,
 } from 'lucide-react'
 
 const NAV_ITEMS = [
   { href: '/inbox',      label: 'Inbox',      icon: <Inbox       size={18} strokeWidth={1.6} /> },
-  { href: '/drafts',     label: 'Drafts',    icon: <FileText     size={18} strokeWidth={1.6} /> },
-  { href: '/ideas',      label: 'Ideas',     icon: <Lightbulb    size={18} strokeWidth={1.6} /> },
-  { href: '/files',      label: 'Files',     icon: <FolderOpen   size={18} strokeWidth={1.6} /> },
-  { href: '/tasks',      label: 'Tasks',     icon: <CheckSquare  size={18} strokeWidth={1.6} /> },
-  { href: '/outreach',   label: 'Outreach',  icon: <span style={{ fontSize: 16, lineHeight: 1 }}>🎯</span> },
-  { href: '/architecture', label: 'Architecture', icon: <span style={{ fontSize: 16, lineHeight: 1 }}>🏗️</span> },
+  { href: '/projects',   label: 'Projects',   icon: <FolderOpen  size={18} strokeWidth={1.6} /> },
+  { href: '/agents',     label: 'Agents',     icon: <Cpu         size={18} strokeWidth={1.6} /> },
+  { href: '/memory',     label: 'Memory',     icon: <BookOpen    size={18} strokeWidth={1.6} /> },
+  { href: '/intelligence', label: 'Intelligence', icon: <Sparkles size={18} strokeWidth={1.6} /> },
 ]
 
 export function Sidebar() {
   const pathname = usePathname()
-  const { unreadCount, sidebarCollapsed, setSidebarCollapsed, items } = useBentoStore()
+  const { unreadCount, sidebarCollapsed, setSidebarCollapsed } = useBentoStore()
   const { theme, cycle, setTheme } = useThemeStore()
 
-  // Count active (non-done, non-rejected) ideas per project
-  const ideaCountByProject = useMemo(() => {
-    const counts: Record<string, number> = {}
-    for (const item of items) {
-      if (item.type === 'idea' && item.status !== 'done' && item.status !== 'rejected' && item.project) {
-        counts[item.project] = (counts[item.project] ?? 0) + 1
-      }
-    }
-    return counts
-  }, [items])
+
   const isDark = theme === 'dark'
   const isForest = theme === 'forest'
   const isDesert = theme === 'desert'
@@ -91,15 +78,15 @@ export function Sidebar() {
               : '0 2px 10px rgba(59,130,246,0.30)',
           }}
         >
-          <span className="text-[16px]">🍣</span>
+          <span className="text-[16px]">🧠</span>
         </div>
         {!sidebarCollapsed && (
           <div>
             <div className="text-[15px] font-semibold tracking-tight leading-tight" style={{ color: 'var(--text-primary)' }}>
-              BentoBoard
+              AGI Dashboard
             </div>
             <div className="text-[12px] mt-0.5 leading-tight" style={{ color: 'var(--text-muted)' }}>
-              Brian &amp; Bento
+              George &amp; AGI
             </div>
           </div>
         )}
@@ -157,57 +144,7 @@ export function Sidebar() {
           )
         })}
 
-        {/* Projects section */}
-        {!sidebarCollapsed && (
-          <div className="px-3 pt-6 pb-2">
-            <span className="text-[11px] font-medium uppercase tracking-wider" style={{ color: 'var(--nav-section-label)' }}>
-              Projects
-            </span>
-          </div>
-        )}
-        {sidebarCollapsed && (
-          <div className="h-px mx-2 my-3" style={{ background: 'var(--divider)' }} />
-        )}
 
-        {DEFAULT_PROJECTS.map((project) => {
-          const href = `/ideas?project=${project.slug}`
-          const isActive = pathname.startsWith('/ideas') && pathname.includes(`project=${project.slug}`)
-            || pathname.includes(`project=${project.slug}`)
-          const ideaCount = ideaCountByProject[project.slug] ?? 0
-
-          return (
-            <Link
-              key={project.slug}
-              href={href}
-              className={cn(
-                'flex items-center gap-2.5 rounded-xl px-3 py-2 transition-all duration-150',
-                sidebarCollapsed ? 'justify-center px-0' : ''
-              )}
-              style={{
-                background: isActive ? 'var(--nav-item-active)' : 'transparent',
-                color: isActive ? 'var(--nav-item-active-text)' : 'var(--nav-item-text)',
-              }}
-              title={project.name}
-              onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.background = 'var(--nav-item-hover)' }}
-              onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.background = 'transparent' }}
-            >
-              <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: project.color }} />
-              {!sidebarCollapsed && (
-                <>
-                  <span className="truncate text-[13px] flex-1">{project.name}</span>
-                  {ideaCount > 0 && (
-                    <span
-                      className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full flex-shrink-0"
-                      style={{ background: project.color + '22', color: project.color }}
-                    >
-                      {ideaCount}
-                    </span>
-                  )}
-                </>
-              )}
-            </Link>
-          )
-        })}
       </nav>
 
       {/* Bottom controls */}

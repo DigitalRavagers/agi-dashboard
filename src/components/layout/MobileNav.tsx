@@ -3,14 +3,14 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useBentoStore } from '@/lib/store'
-import { Inbox, FileText, Lightbulb, FolderOpen, CheckSquare } from 'lucide-react'
+import { Inbox, FolderOpen, Cpu, BookOpen, Sparkles } from 'lucide-react'
 
 const TABS = [
-  { href: '/inbox',  label: 'Inbox',  icon: <Inbox       size={20} strokeWidth={1.75} /> },
-  { href: '/drafts', label: 'Drafts', icon: <FileText     size={20} strokeWidth={1.75} /> },
-  { href: '/ideas',  label: 'Ideas',  icon: <Lightbulb    size={20} strokeWidth={1.75} /> },
-  { href: '/files',  label: 'Files',  icon: <FolderOpen   size={20} strokeWidth={1.75} /> },
-  { href: '/tasks',  label: 'Tasks',  icon: <CheckSquare  size={20} strokeWidth={1.75} /> },
+  { href: '/inbox',        label: 'Inbox',        icon: <Inbox       size={20} strokeWidth={1.75} /> },
+  { href: '/projects',     label: 'Projects',     icon: <FolderOpen  size={20} strokeWidth={1.75} /> },
+  { href: '/agents',       label: 'Agents',       icon: <Cpu         size={20} strokeWidth={1.75} /> },
+  { href: '/memory',       label: 'Memory',       icon: <BookOpen    size={20} strokeWidth={1.75} /> },
+  { href: '/intelligence', label: 'Intel',        icon: <Sparkles    size={20} strokeWidth={1.75} /> },
 ]
 
 export function MobileNav() {

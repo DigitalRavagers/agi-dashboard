@@ -89,14 +89,19 @@ export const NOTIFICATION_CONFIG: Record<
 }
 
 export const DEFAULT_PROJECTS = [
-  { slug: 'newsletter',         name: 'Weekly Newsletter',   color: '#5B9CF6' },
-  { slug: 'claudepocalypse',    name: 'Claudepocalypse',     color: '#F43F5E' },
-  { slug: 'ambassador-outreach',name: 'Ambassador Outreach', color: '#A78BFA' },
-  { slug: 'morning-briefing',   name: 'Morning Briefing',    color: '#F59E0B' },
-  { slug: 'content-creation',   name: 'Content Creation',    color: '#EC4899' },
-  { slug: 'email-monitoring',   name: 'Email Monitoring',    color: '#22D3EE' },
-  { slug: 'blog-posts',         name: 'Blog Posts',          color: '#10B981' },
+  { slug: 'digital-ravagers',  name: 'Digital Ravagers',     color: '#EF4444', emoji: '⚡', description: 'AI content and automation systems' },
+  { slug: 'creative-grooves',  name: 'Creative Grooves Inc', color: '#EC4899', emoji: '🎵', description: 'Music and CGI record label' },
+  { slug: 'cgi-persona-dark',  name: 'Dark DJ Persona',      color: '#8B5CF6', emoji: '🎧', description: 'AI DJ persona - dark house niche' },
+  { slug: 'cgi-persona-wellness', name: 'Wellness Persona',  color: '#10B981', emoji: '🌿', description: 'AI wellness sound persona' },
+  { slug: 'george-of-jungle',  name: 'George Of This Jungle', color: '#F59E0B', emoji: '🌴', description: 'Mind and money content platform' },
+  { slug: 'money-man',         name: 'The Money Man',        color: '#3B82F6', emoji: '💰', description: 'Financial education and wealth building' },
+  { slug: 'employee-school',   name: 'Employee School',      color: '#06B6D4', emoji: '🏫', description: 'Psychology-backed education' },
+  { slug: 'manus-credits',     name: 'Manus Credits',        color: '#EF4444', emoji: '⚡', description: 'Daily credit burn tracking' },
+  { slug: 'personal',          name: 'Personal / Life',      color: '#6366F1', emoji: '🧠', description: 'Personal goals, health, relationships' },
+  { slug: 'agi-system',        name: 'AGI System',           color: '#1E293B', emoji: '🤖', description: 'Dashboard infrastructure and automation' },
 ]
+
+export type ProjectInfo = { slug: string; name: string; color: string; emoji?: string; description?: string }
 
 export function getFileTypeKey(fileType?: string | null): string {
   if (!fileType) return 'generic'
