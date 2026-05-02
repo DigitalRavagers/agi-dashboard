@@ -4,7 +4,7 @@ import { ThemeProvider } from '@/components/layout/ThemeProvider'
 
 export const metadata: Metadata = {
   title: "AGI Dashboard",
-  description: "Your personal AGI Dashboard — capture, organize, execute, remember, and learn."',
+  description: 'Your personal AGI Dashboard — capture, organize, execute, remember, and learn.',
 }
 
 export const viewport: Viewport = {
